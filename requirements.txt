@@ -6,5 +6,5 @@ hexdump
 termcolor
 construct
 netaddr
-NetfilterQueue
+git+https://github.com/kti/python-netfilterqueue 
 pydivert
