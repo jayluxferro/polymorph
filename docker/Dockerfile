@@ -1,4 +1,4 @@
-FROM kalilinux/kali-linux-docker
+FROM kalilinux/kali
 # Metadata params
 ARG BUILD_DATE
 ARG VERSION
@@ -19,8 +19,8 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.url='https://www.kali.org/' \
       org.label-schema.vendor='Offensive Security' \
       org.label-schema.schema-version='1.0' \
-      org.label-schema.docker.cmd='docker run --rm kalilinux/kali-linux-docker' \
-      org.label-schema.docker.cmd.devel='docker run --rm -ti kalilinux/kali-linux-docker' \
+      org.label-schema.docker.cmd='docker run --rm kalilinux/kali' \
+      org.label-schema.docker.cmd.devel='docker run --rm -ti kalilinux/kali' \
       org.label-schema.docker.debug='docker logs $CONTAINER' \
       io.github.offensive-security.docker.dockerfile="Dockerfile" \
       io.github.offensive-security.license="GPLv3" \
@@ -32,8 +32,9 @@ ENV PYTHONIOENCODING=utf8
 RUN set -x \
     && apt-get -yqq update \
     && apt-get clean \
-    && apt-get install -yqq build-essential python-dev libnetfilter-queue-dev tshark tcpdump python3-pip wireshark git python3-scapy \
+    && apt-get install -yqq build-essential python-dev libnetfilter-queue-dev tshark tcpdump python3-pip wireshark \
     && apt install -yqq python3-pip \
+    && apt install -yqq git \
     && pip3 install -U git+https://github.com/kti/python-netfilterqueue \
     && pip3 install --process-dependency-links polymorph
 
